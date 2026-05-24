@@ -79,6 +79,18 @@ body {
   color: #fff;
 }
 
+@media (max-width: 520px) {
+  .site-header {
+    padding: 0 3vw;
+  }
+  .site-header-nav {
+    gap: 1rem;
+  }
+  .site-header-link {
+    letter-spacing: 0.1em;
+  }
+}
+
 /* ── Hero ─────────────────────────────────────────────── */
 .hero {
   position: sticky;
