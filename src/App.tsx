@@ -7,12 +7,13 @@ import { Header } from './components/Header'
 import './App.css'
 
 export default function App() {
+  const isMobile = window.innerWidth < 768
   return (
     <>
       <Header />
       <section className="hero" id="top">
         <Canvas
-          camera={{ position: [0, 1.2, 6], fov: 50, near: 0.1, far: 100 }}
+          camera={{ position: [0, 1.2, isMobile ? 10 : 6], fov: 50, near: 0.1, far: 100 }}
           dpr={[1, 2]}
           style={{ width: '100%', height: '100%' }}
         >

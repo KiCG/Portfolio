@@ -28,6 +28,8 @@ export function AboutSection() {
     return () => observer.disconnect()
   }, [])
 
+  const isMobile = window.innerWidth < 768
+
   const handleHoverChange = useCallback((ring: HoveredRing | null) => {
     setHoveredRing(ring)
   }, [])
@@ -93,7 +95,7 @@ export function AboutSection() {
 
           <Canvas
             className="about-skill-canvas"
-            camera={{ position: [1.4, 0, 6.5], fov: 50, near: 0.1, far: 60 }}
+            camera={{ position: [1.4, 0, isMobile ? 10 : 6.5], fov: 50, near: 0.1, far: 60 }}
             dpr={[1, 2]}
           >
             <color attach="background" args={['#05060c']} />
