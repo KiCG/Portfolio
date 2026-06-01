@@ -76,14 +76,20 @@ function TextStream({ text, y, speed, color = '#ffffff', fontSize = 0.27 }: Stre
       const g = refs.current[i]
       if (!g) continue
 
-      const r     = SPHERE_R
-      const wrapR = r - 0.5
-      const d2    = x * x + y * y
+      const r         = SPHERE_R
+      const outerEdge = r - 0.1   // blending starts here
+      const innerEdge = r - 1.0   // fully on sphere here
+      const d         = Math.sqrt(x * x + y * y)
 
-      if (d2 < wrapR * wrapR) {
-        const z = Math.sqrt(r * r - d2)
-        g.position.set(x, y, z + 0.02)
-        g.rotation.y = Math.atan2(x, z)
+      if (d < outerEdge) {
+        const zSphere = Math.sqrt(r * r - Math.min(d, r - 0.001) ** 2)
+        const raw     = (outerEdge - d) / (outerEdge - innerEdge)
+        const t       = Math.max(0, Math.min(1, raw))
+        const st      = t * t * (3 - 2 * t)  // smoothstep
+
+        const z = zSphere * st
+        g.position.set(x, y, z + 0.02 * st)
+        g.rotation.y = Math.atan2(x, Math.max(z, 0.001)) * st
       } else {
         g.position.set(x, y, 0)
         g.rotation.y = 0
