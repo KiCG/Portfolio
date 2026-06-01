@@ -77,8 +77,8 @@ function TextStream({ text, y, speed, color = '#ffffff', fontSize = 0.27 }: Stre
       if (!g) continue
 
       const r         = SPHERE_R
-      const outerEdge = r - 0.1   // blending starts here
-      const innerEdge = r - 1.0   // fully on sphere here
+      const outerEdge = r + 0.3   // blending starts here
+      const innerEdge = r - 0.5   // fully on sphere here
       const d         = Math.sqrt(x * x + y * y)
 
       if (d < outerEdge) {
