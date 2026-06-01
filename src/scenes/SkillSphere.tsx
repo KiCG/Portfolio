@@ -51,9 +51,9 @@ export const RINGS: RingData[] = [
     color: '#ffb37a',
   },
   {
-    category: 'AI & API Integration',
-    text: '  Gemini API · Tripo API ・ Prompt Engineering ・ ',
-    skills: ['Gemini API', 'Tripo API', 'Prompt Engineering'],
+    category: 'Backend & AI',
+    text: '  Python · Flask · Gemini API · Tripo API · Prompt Engineering · ',
+    skills: ['Python', 'Flask', 'Gemini API', 'Tripo API', 'Prompt Engineering'],
     tilt: [MathUtils.degToRad(32), 0, MathUtils.degToRad(72)],
     baseSpeed: -0.16,
     color: '#b3ffa0',
