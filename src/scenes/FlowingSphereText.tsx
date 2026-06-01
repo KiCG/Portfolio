@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber'
 import { Text } from '@react-three/drei'
 import { Bloom, EffectComposer } from '@react-three/postprocessing'
 import { KernelSize } from 'postprocessing'
-import { AdditiveBlending, Color, type Group, type Mesh } from 'three'
+import { AdditiveBlending, Color, type Group, type Mesh, type Points } from 'three'
 
 const fresnelVertex = /* glsl */ `
   varying vec3 vNormal;
@@ -135,7 +135,7 @@ function FresnelSphere() {
   )
 
   useFrame((_, delta) => {
-    meshRef.current.rotation.y += delta * 0.08
+    meshRef.current.rotation.y += delta * 0.35
   })
 
   return (
@@ -153,6 +153,87 @@ function FresnelSphere() {
   )
 }
 
+const PARTICLE_COUNT = 250
+const PARTICLE_R     = 2.0
+
+function SphereParticles() {
+  const pointsRef = useRef<Points>(null!)
+
+  const { positions, velocities } = useMemo(() => {
+    const positions  = new Float32Array(PARTICLE_COUNT * 3)
+    const velocities = new Float32Array(PARTICLE_COUNT * 3)
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      const theta = Math.random() * Math.PI * 2
+      const phi   = Math.acos(2 * Math.random() - 1)
+      const nx    = Math.sin(phi) * Math.cos(theta)
+      const ny    = Math.sin(phi) * Math.sin(theta)
+      const nz    = Math.cos(phi)
+
+      // 初期位置を球面〜2.5倍半径の範囲に散らして一斉噴出を避ける
+      const dist = PARTICLE_R * (1 + Math.random() * 1.5)
+      positions[i * 3]     = nx * dist
+      positions[i * 3 + 1] = ny * dist
+      positions[i * 3 + 2] = nz * dist
+
+      const speed = 0.4 + Math.random() * 0.6
+      velocities[i * 3]     = nx * speed
+      velocities[i * 3 + 1] = ny * speed
+      velocities[i * 3 + 2] = nz * speed
+    }
+
+    return { positions, velocities }
+  }, [])
+
+  useFrame((_, delta) => {
+    const pos = pointsRef.current.geometry.attributes.position.array as Float32Array
+    const limit2 = (PARTICLE_R * 2.5) ** 2
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      pos[i * 3]     += velocities[i * 3]     * delta
+      pos[i * 3 + 1] += velocities[i * 3 + 1] * delta
+      pos[i * 3 + 2] += velocities[i * 3 + 2] * delta
+
+      const dx = pos[i * 3], dy = pos[i * 3 + 1], dz = pos[i * 3 + 2]
+      if (dx * dx + dy * dy + dz * dz > limit2) {
+        // 球面上のランダム点にリセット
+        const theta = Math.random() * Math.PI * 2
+        const phi   = Math.acos(2 * Math.random() - 1)
+        const nx    = Math.sin(phi) * Math.cos(theta)
+        const ny    = Math.sin(phi) * Math.sin(theta)
+        const nz    = Math.cos(phi)
+        pos[i * 3]     = nx * PARTICLE_R
+        pos[i * 3 + 1] = ny * PARTICLE_R
+        pos[i * 3 + 2] = nz * PARTICLE_R
+
+        const speed = 0.4 + Math.random() * 0.6
+        velocities[i * 3]     = nx * speed
+        velocities[i * 3 + 1] = ny * speed
+        velocities[i * 3 + 2] = nz * speed
+      }
+    }
+
+    pointsRef.current.geometry.attributes.position.needsUpdate = true
+  })
+
+  return (
+    <points ref={pointsRef}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+      </bufferGeometry>
+      <pointsMaterial
+        size={0.025}
+        color="#ff9a5a"
+        transparent
+        opacity={0.6}
+        blending={AdditiveBlending}
+        depthWrite={false}
+        sizeAttenuation
+      />
+    </points>
+  )
+}
+
 export function FlowingSphereText() {
   return (
     <>
@@ -162,6 +243,7 @@ export function FlowingSphereText() {
       <pointLight position={[4, -2, 6]} intensity={0.6} color="#ff8a5f" />
 
       <FresnelSphere />
+      <SphereParticles />
 
       <TextStream
         text="   Hello, I`m Ryusei Kishi   "
