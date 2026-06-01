@@ -76,10 +76,11 @@ function TextStream({ text, y, speed, color = '#ffffff', fontSize = 0.27 }: Stre
       const g = refs.current[i]
       if (!g) continue
 
-      const r  = SPHERE_R
-      const d2 = x * x + y * y
+      const r     = SPHERE_R
+      const wrapR = r - 0.5
+      const d2    = x * x + y * y
 
-      if (d2 < r * r) {
+      if (d2 < wrapR * wrapR) {
         const z = Math.sqrt(r * r - d2)
         g.position.set(x, y, z + 0.02)
         g.rotation.y = Math.atan2(x, z)
