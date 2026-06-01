@@ -632,6 +632,12 @@ body {
   transform: translate(2px, -2px);
 }
 
+@media (max-width: 768px) {
+  .works-card-arrow {
+    display: none;
+  }
+}
+
 /* ── Works Modal ──────────────────────────────────────── */
 .works-modal-overlay {
   position: fixed;
