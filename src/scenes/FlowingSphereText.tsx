@@ -135,7 +135,7 @@ function FresnelSphere() {
   )
 
   useFrame((_, delta) => {
-    meshRef.current.rotation.y += delta * 0.35
+    meshRef.current.rotation.y += delta * 0.1
   })
 
   return (

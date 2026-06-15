@@ -943,3 +943,10 @@ body {
   color: rgba(255, 122, 42, 0.8);
   transform: translate(2px, -2px);
 }
+
+@media (max-width: 768px) {
+  .contact-link-icon,
+  .works-modal-link-arrow {
+    display: none;
+  }
+}

@@ -36,7 +36,7 @@ export const RINGS: RingData[] = [
   },
   {
     category: '3DCG & Motion',
-    text: '  Blender ・ Houdini (VEX) ・ DaVinci Resolve · ',
+    text: ' ・ evloseR icniVaD ・ )XEV( iniduoH ・ rednelB',
     skills: ['Blender', 'Houdini (VEX)', 'DaVinci Resolve'],
     tilt: [MathUtils.degToRad(58), 0, MathUtils.degToRad(15)],
     baseSpeed: -0.22,
@@ -44,7 +44,7 @@ export const RINGS: RingData[] = [
   },
   {
     category: 'Digital Fabrication',
-    text: '  3D Printer · Laser Cutter · UV Printer · ',
+    text: ' ・ retnirP VU ・ rettuC resaL ・ retnirP D3',
     skills: ['3D Printer', 'Laser Cutter', 'UV Printer'],
     tilt: [MathUtils.degToRad(-55), 0, MathUtils.degToRad(-18)],
     baseSpeed: 0.19,
@@ -52,7 +52,7 @@ export const RINGS: RingData[] = [
   },
   {
     category: 'Backend & AI',
-    text: '  Python · Flask · Gemini API · Tripo API · Prompt Engineering · ',
+    text: ' ・ gnireenignE tpmorP ・ IPA opirT ・ IPA inimeG ・ ksalF ・ nohtyP',
     skills: ['Python', 'Flask', 'Gemini API', 'Tripo API', 'Prompt Engineering'],
     tilt: [MathUtils.degToRad(32), 0, MathUtils.degToRad(72)],
     baseSpeed: -0.16,

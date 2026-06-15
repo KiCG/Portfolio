@@ -4,7 +4,7 @@ const WORKS = [
   {
     id: '01', title: 'Emotional Monster Marker',    category: 'Blender · Gemini API · 3D Print',  year: '2026',
     image: 'Emotional_Monster_Maker.png', featured: true,
-    description: '感情の入力からGemini APIを活用してTripo AIで3Dモンスターを自動生成し、3Dプリントするシステム。Kyoto Micro Maker Faire 2026に出展。',
+    description: '  ユーザーの感情入力から Gemini API でモンスターのコンセプトを生成し、Tripo API で 3D 化、さらに 3Dプリンタで物理出力するインタラクティブ作品。Kyoto Micro Maker Faire 2026にて伊藤研究室のプロジェクトとして出展。Python によるパイプライン構築と API 連携が技術的な核。',
     github: 'https://github.com/KiCG/Emotional-Monster-Maker', live: '', notion: 'https://www.notion.so/Emotional-Monster-Marker-348c905aa6c18068bd59c784ff65f0ae',
   },
   {
@@ -19,12 +19,12 @@ const WORKS = [
     description: 'どんなモノでも粉物であるとこじつけてくれるジョークアプリ。KC3 Hack 2025に出展。',
     github: 'https://github.com/kc3hack/2025_14', live: '', notion: 'https://www.notion.so/KonamonoMaster-KC3Hack2024-27fc905aa6c18024b7e9f1bc0a9df86e',
   },
-  // {
-  //   id: '04', title: 'Project Bundler',             category: 'Blender Add-on · Python',          year: '2026',
-  //   image: 'Project_Bundler.png', featured: false,
-  //   description: 'BlenderのアドオンとしてPythonで開発したプロジェクト管理・バンドルツール。',
-  //   github: 'https://github.com/KiCG/ProjectBundler', live: '', notion: '',
-  // },
+  {
+    id: '04', title: 'Project Bundler',             category: 'Blender Add-on · Python',          year: '2026',
+    image: 'Project_Bundler.png', featured: false,
+    description: 'BlenderのアドオンとしてPythonで開発したプロジェクト管理・バンドルツール。',
+    github: 'https://github.com/KiCG/ProjectBundler', live: '', notion: '',
+  },
   {
     id: '05', title: 'まるで檻のような',    category: 'Blender',                          year: '2025',
     image: 'vocacolle.png', featured: true,
@@ -35,7 +35,7 @@ const WORKS = [
     id: '06', title: 'Castle',                      category: 'Blender',                          year: '2025',
     image: 'castle.png', featured: false,
     description: 'Blenderで制作した城のモデリング・レンダリング作品。',
-    github: '', live: '', notion: '',
+    github: '', live: '', notion: 'https://app.notion.com/p/Castle-27fc905aa6c18051ad4cc793ef889d70',
   },
   {
     id: '07', title: 'GeoAnimation',                category: 'Blender',                          year: '2025',
@@ -56,9 +56,9 @@ const WORKS = [
     github: '', live: 'https://bitsummit-gamejam.itch.io/phantommirror', notion: 'https://www.notion.so/PhantomMirror-BitSummit2025-27fc905aa6c1801b9fe3d7c6a7da775a',
   },
   {
-    id: '10', title: 'Digital Fabrication',         category: '3D Print · Laser · UV Print',      year: '2023',
-    image: 'digifab.png', featured: false,
-    description: '3Dプリント・レーザーカット・UVプリントを組み合わせたデジタルファブリケーション作品。',
+    id: '10', title: 'K-step Getter',               category: 'Blender · DaVinci Resolve',        year: '2026',
+    image: 'gacha.png', featured: false,
+    description: 'BlenderとDaVinci Resolveで制作した映像作品。',
     github: '', live: '', notion: '',
   },
   // {
@@ -68,9 +68,21 @@ const WORKS = [
   //   github: '', live: 'https://vimeo.com/1123445679', notion: '',
   // },
   {
-    id: '12', title: 'K-step Getter',               category: 'Blender · DaVinci Resolve',        year: '2026',
-    image: 'gacha.png', featured: false,
-    description: 'BlenderとDaVinci Resolveで制作した映像作品。',
+    id: '12', title: 'Lantern',         category: '3D Print · Laser · UV Print',      year: '2024',
+    image: 'lantern.png', featured: false,
+    description: '3Dプリント・レーザーカット・UVプリントを組み合わせたデジタルファブリケーション作品。',
+    github: '', live: '', notion: '',
+  },
+  {
+    id: '13', title: 'Pumpkin',         category: '3D Print',      year: '2023',
+    image: 'pumpkin.png', featured: false,
+    description: '3Dプリントを用いたデジタルファブリケーション作品。',
+    github: '', live: '', notion: '',
+  },
+  {
+    id: '14', title: 'New Year',         category: 'Laser Cutter',      year: '2023',
+    image: 'newyear.png', featured: false,
+    description: 'レーザーカッターを用いたデジタルファブリケーション作品。',
     github: '', live: '', notion: '',
   },
 ]
@@ -121,17 +133,17 @@ function WorkModal({ work, onClose }: { work: Work; onClose: () => void }) {
               <div className="works-modal-links">
                 {work.notion && (
                   <a href={work.notion} target="_blank" rel="noopener noreferrer" className="works-modal-link works-modal-link--primary">
-                    詳細 ↗
+                    詳細<span className="works-modal-link-arrow"> ↗</span>
                   </a>
                 )}
                 {work.live && (
                   <a href={work.live} target="_blank" rel="noopener noreferrer" className="works-modal-link">
-                    Live ↗
+                    Live<span className="works-modal-link-arrow"> ↗</span>
                   </a>
                 )}
                 {work.github && (
                   <a href={work.github} target="_blank" rel="noopener noreferrer" className="works-modal-link">
-                    GitHub ↗
+                    GitHub<span className="works-modal-link-arrow"> ↗</span>
                   </a>
                 )}
               </div>
