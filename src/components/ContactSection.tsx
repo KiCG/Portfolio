@@ -32,7 +32,7 @@ export function ContactSection() {
       <div className="contact-body">
         <div className="contact-left">
           <p className="contact-desc">                                                            
-          WebGL・3DCG・デジタルファブリケーションを組み合わせた表現に取り組んでいます。<br />   
+          Web・3DCG・デジタルファブリケーションを組み合わせた表現に取り組んでいます。<br />   
           お気軽にご連絡ください。                                                              
           </p> 
           <a className="contact-email" href="mailto:kishi.ryusei69@gmail.com">

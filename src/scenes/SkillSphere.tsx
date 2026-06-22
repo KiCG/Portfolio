@@ -28,16 +28,16 @@ type RingData = HoveredRing & {
 export const RINGS: RingData[] = [
   {
     category: 'Web & Creative Coding',
-    text: ' tcaeR ・ tpircSepyT ・ sj.eerhT / F3R ・ LSLG ・ LGbeW · ',
-    skills: ['React', 'TypeScript', 'Three.js / R3F', 'GLSL, WebGL'],
+    text: ' tcaeR ・ tpircSepyT ・',
+    skills: ['React', 'TypeScript'],
     tilt: [0, 0, 0],
     baseSpeed: 0.28,
     color: '#ffffff',
   },
   {
     category: '3DCG & Motion',
-    text: ' ・ evloseR icniVaD ・ )XEV( iniduoH ・ rednelB',
-    skills: ['Blender', 'Houdini (VEX)', 'DaVinci Resolve'],
+    text: ' ・ evloseR icniVaD ・ iniduoH ・ rednelB',
+    skills: ['Blender', 'Houdini', 'DaVinci Resolve'],
     tilt: [MathUtils.degToRad(58), 0, MathUtils.degToRad(15)],
     baseSpeed: -0.22,
     color: '#7ad7ff',
