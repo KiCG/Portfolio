@@ -17,7 +17,7 @@ const WORKS = [
     id: '03', title: 'Konamono Master',             category: 'Flask · Gemini API · Python',      year: '2025',
     image: 'judge_app.png', featured: true,
     description: 'どんなモノでも粉物であるとこじつけてくれるジョークアプリ。KC3 Hack 2025に出展。バックエンドのGemini API部分を担当。',
-    github: 'https://github.com/kc3hack/2025_14', live: '', notion: 'https://www.notion.so/KonamonoMaster-KC3Hack2025-27fc905aa6c18024b7e9f1bc0a9df86e',
+    github: 'https://github.com/kc3hack/2025_14', live: '', notion: '',
   },
   {
     id: '04', title: 'Project Bundler',             category: 'Blender Add-on · Python',          year: '2026',
