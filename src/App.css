@@ -277,7 +277,7 @@ body {
   font-size: 0.65rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.7);
   padding-bottom: 0.75rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -603,7 +603,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: 1px;
-  background: rgba(255, 255, 255, 0.06);
+  background: #05060c;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
