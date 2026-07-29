@@ -17,67 +17,67 @@ const WORKS = [
     github: 'https://github.com/KiCG/Ichigo-Ichie', live: '', notion: '',
   },
   {
-    id: '03', title: 'Konamono Master',             category: 'Flask · Gemini API · Python',      year: '2025',
-    image: 'judge_app.png', featured: false, group: 'engineering' as Group, tags: ['team', 'exhibited'] as Tag[],
-    description: 'どんなモノでも粉物であるとこじつけてくれるジョークアプリ。KC3 Hack 2025に出展。バックエンドのGemini API部分を担当。',
-    github: 'https://github.com/kc3hack/2025_14', live: '', notion: '',
-  },
-  {
-    id: '04', title: 'Project Bundler',             category: 'Blender Add-on · Python',          year: '2026',
+    id: '03', title: 'Project Bundler',             category: 'Blender Add-on · Python',          year: '2026',
     image: 'Project_Bundler.png', featured: false, group: 'engineering' as Group, tags: [] as Tag[],
     description: '現在使用しているBlenderファイル + 外部参照テクスチャ等の依存ファイルを1つにまとめて配布・アーカイブできるBlenderアドオン。外部参照テクスチャ群を アンダースコア(_)までの接頭辞でフォルダにまとめるなど、いくつかのルールベースでスマートフォルダ機能を持つ。',
     github: 'https://github.com/KiCG/ProjectBundler', live: '', notion: '',
   },
   {
-    id: '05', title: 'まるで檻のような',    category: 'Blender',                          year: '2025',
-    image: 'vocacolle.png', featured: false, group: '3dcg' as Group, tags: ['team', 'exhibited'] as Tag[],
-    description: 'BlenderとDaVinci Resolveで制作したMV。ボカコレ2025夏に「まるで檻のような」として投稿。作詞作曲から全てチームで作成しており、3DCG部分を全て担当。',
-    github: '', live: 'https://www.nicovideo.jp/watch/sm45321424', notion: '',
+    id: '04', title: 'Konamono Master',             category: 'Flask · Gemini API · Python',      year: '2025',
+    image: 'judge_app.png', featured: false, group: 'engineering' as Group, tags: ['team', 'exhibited'] as Tag[],
+    description: 'どんなモノでも粉物であるとこじつけてくれるジョークアプリ。KC3 Hack 2025に出展。バックエンドのGemini API部分を担当。',
+    github: 'https://github.com/kc3hack/2025_14', live: '', notion: '',
   },
   {
-    id: '06', title: 'Castle',                      category: 'Blender',                          year: '2025',
+    id: '05', title: 'Castle',                      category: 'Blender',                          year: '2025',
     image: 'castle.png', featured: false, group: '3dcg' as Group, tags: [] as Tag[],
     description: 'Blenderで制作した城のモデリング・レンダリング作品。雪が完全に積もった雪山ではなく、部分的にしか積もっていない不完全な雪山を作ることにこだわっている。それを実現するために、法線ベクトルの垂直成分を抽出しプロシージャルマスクを作成し、雪の積もり方をプロシージャルにコントロールしている。',
     github: '', live: '', notion: 'https://app.notion.com/p/Castle-27fc905aa6c18051ad4cc793ef889d70',
   },
   {
-    id: '07', title: 'GeoAnimation',                category: 'Blender',                          year: '2025',
+    id: '06', title: 'GeoAnimation',                category: 'Blender',                          year: '2025',
     image: 'geoanim.png', featured: false, group: '3dcg' as Group, tags: [] as Tag[],
     description: 'Blenderのジオメトリノードを活用したプロシージャルアニメーション作品。インスタンスとして配置している立方体のスケールを、波テクスチャ(Sin波)とノイズテクスチャのハイブリッドでコントロールしており、規則性の中に現れる不規則性によりビジュアルとして面白いものになるように設計している。',
     github: '', live: '', notion: 'https://www.notion.so/GeoAnimation-2f1c905aa6c1801781c4e2decef39df7',
   },
   {
-    id: '08', title: 'Valentine Cake',              category: 'Blender',                          year: '2026',
+    id: '07', title: 'Valentine Cake',              category: 'Blender',                          year: '2026',
     image: 'cake.png', featured: false, group: '3dcg' as Group, tags: [] as Tag[],
     description: 'Blenderで制作したバレンタインケーキのモデリング・レンダリング作品。クランチの作成に、ボロノイ分割した立方体をインスタンスとして配置している。また、クランチのカラーバリエーションをつけるために、インスタンスごとに割り振られた0~1の乱数とベースカラーを乗算している。',
     github: '', live: '', notion: 'https://www.notion.so/Valentine-2f1c905aa6c180168ea0d8525081f599',
   },
   {
-    id: '09', title: 'Phantom Mirror',               category: 'Unreal Engine · Blender',          year: '2025',
-    image: 'PhantomMirror.png', featured: false, group: '3dcg' as Group, tags: ['team', 'exhibited'] as Tag[],
-    description: 'Unreal EngineとBlenderで制作したゲーム「Phantom Mirror」。Bitsummit 2025に出展。プロップと敵キャラクターのモデリング、アニメーションを担当。',
-    github: '', live: 'https://bitsummit-gamejam.itch.io/phantommirror', notion: 'https://www.notion.so/PhantomMirror-BitSummit2025-27fc905aa6c1801b9fe3d7c6a7da775a',
-  },
-  {
-    id: '10', title: 'K-step Getter',               category: 'Blender · DaVinci Resolve',        year: '2026',
+    id: '08', title: 'K-step Getter',               category: 'Blender · DaVinci Resolve',        year: '2026',
     image: 'gacha.png', featured: false, group: '3dcg' as Group, tags: [] as Tag[],
     description: 'BlenderとDaVinci Resolveで制作したガチャ画面のイメージ。階段を登ることによってガチャを引けるというコンセプトのアプリを想定して作成。',
     github: '', live: '', notion: '',
   },
   {
-    id: '12', title: 'Lantern',         category: '3D Print · Laser · UV Print',      year: '2024',
+    id: '09', title: 'まるで檻のような',    category: 'Blender',                          year: '2025',
+    image: 'vocacolle.png', featured: false, group: '3dcg' as Group, tags: ['team', 'exhibited'] as Tag[],
+    description: 'BlenderとDaVinci Resolveで制作したMV。ボカコレ2025夏に「まるで檻のような」として投稿。作詞作曲から全てチームで作成しており、3DCG部分を全て担当。',
+    github: '', live: 'https://www.nicovideo.jp/watch/sm45321424', notion: '',
+  },
+  {
+    id: '10', title: 'Phantom Mirror',               category: 'Unreal Engine · Blender',          year: '2025',
+    image: 'PhantomMirror.png', featured: false, group: '3dcg' as Group, tags: ['team', 'exhibited'] as Tag[],
+    description: 'Unreal EngineとBlenderで制作したゲーム「Phantom Mirror」。Bitsummit 2025に出展。プロップと敵キャラクターのモデリング、アニメーションを担当。',
+    github: '', live: 'https://bitsummit-gamejam.itch.io/phantommirror', notion: 'https://www.notion.so/PhantomMirror-BitSummit2025-27fc905aa6c1801b9fe3d7c6a7da775a',
+  },
+  {
+    id: '11', title: 'Lantern',         category: '3D Print · Laser · UV Print',      year: '2024',
     image: 'lantern.png', featured: false, group: 'fabrication' as Group, tags: [] as Tag[],
     description: '3Dプリント・レーザーカット・UVプリントを組み合わせたデジタルファブリケーション作品。中に市販のLEDキャンドルをセッティングし、お手軽な照明器具として利用できる。',
     github: '', live: '', notion: '',
   },
   {
-    id: '13', title: 'Pumpkin',         category: '3D Print',      year: '2023',
+    id: '12', title: 'Pumpkin',         category: '3D Print',      year: '2023',
     image: 'pumpkin.png', featured: false, group: 'fabrication' as Group, tags: [] as Tag[],
     description: '3Dプリントを用いたデジタルファブリケーション作品。ジャック・オ・ランタンをモチーフにシンプルなオブジェクトを作成。ギミックとして、真ん中部分にジョイントが作成してあり、上半分と下半分を取り外すことができる。',
     github: '', live: '', notion: '',
   },
   {
-    id: '14', title: 'New Year',         category: 'Laser Cutter',      year: '2023',
+    id: '13', title: 'New Year',         category: 'Laser Cutter',      year: '2023',
     image: 'newyear.png', featured: false, group: 'fabrication' as Group, tags: [] as Tag[],
     description: 'レーザーカッターを用いたデジタルファブリケーション作品。お正月や初日の出をモチーフに作成。3枚のMDF板をコルク板にジョイントすることで、一枚の立体的な絵のような作品になっている。',
     github: '', live: '', notion: '',
@@ -274,7 +274,7 @@ export function WorksSection() {
       <div className="works-other-header">
         <p className="works-subtitle works-subtitle--more">Other Works</p>
         <div className="works-filters" role="tablist" aria-label="Filter by tag">
-          {(['all', 'team', 'exhibited'] as FilterTag[]).map(t => (
+          {(['all', 'team' /* , 'exhibited' */] as FilterTag[]).map(t => (
             <button
               key={t}
               type="button"
