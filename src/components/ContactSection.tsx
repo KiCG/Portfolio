@@ -3,7 +3,8 @@ import { useEffect, useRef } from 'react'
 const LINKS = [
   { label: 'GitHub', href: 'https://github.com/KiCG', icon: '↗' },
   { label: 'Twitter / X', href: 'https://x.com/Kicg_0609', icon: '↗' },
-  { label: 'Instagram', href: 'https://www.instagram.com/ryusei_6743/?hl=ja', icon: '↗' },
+  // { label: 'Instagram', href: 'https://www.instagram.com/ryusei_6743/?hl=ja', icon: '↗' },
+  { label: 'AtCoder', href: 'https://atcoder.jp/users/KiCG', icon: '↗' }
 ]
 
 export function ContactSection() {

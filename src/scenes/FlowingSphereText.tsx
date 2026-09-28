@@ -66,7 +66,7 @@ function TextStream({ text, y, speed, color = '#ffffff', fontSize = 0.27 }: Stre
   const onOut  = useCallback(() => { hoveredRef.current = false; setHovered(false) }, [])
 
   useFrame((_, dt) => {
-    if (hoveredRef.current) return  // ホバー中はアニメーション停止
+    // if (hoveredRef.current) return  // ホバー中はアニメーション停止
 
     for (let i = 0; i < chars.length; i++) {
       let x = xs.current[i] - dt * speed
@@ -97,7 +97,9 @@ function TextStream({ text, y, speed, color = '#ffffff', fontSize = 0.27 }: Stre
     }
   })
 
-  const displayColor = hovered ? '#2afff1' : color
+  // const displayColor = hovered ? '#2afff1' : color
+  const displayColor = color
+  void hovered
 
   return (
     <>
