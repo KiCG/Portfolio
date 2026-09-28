@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { SkillSphere, RINGS, type HoveredRing } from '../scenes/SkillSphere'
+import { SkillSphere, RINGS, TIERS, type HoveredRing } from '../scenes/SkillSphere'
 
 const CAREER = [
   { period: '2026',            role: 'Kyoto Micro Maker Faire 2026',      place: 'Emotional Monster Marker 出展 (研究室プロジェクト）' },
@@ -54,7 +54,8 @@ export function AboutSection() {
             <p className="about-name">Ryusei Kishi</p>
             <p className="about-role">Creative Technologist</p>
             <p className="about-comment">
-              "技術の『合理』とアートの『非合理』を編み上げ、体験をデザインする"
+              エンジニアリングの『合理』とアートの『非合理』を<br />
+              組み合わせて、体験をデザインする
             </p>
           </div>
         </div>
@@ -78,8 +79,8 @@ export function AboutSection() {
             <p className="about-block-label">Profile</p>
             <p className="about-profile">
                 大学では「プログラミング」と「3DCG」を軸に活動しています。授業では触れられない <br />          
-                3DCGを独学で（Blenderを中心に）習得する一方、競技プログラミング（AtCoder 茶色）やPythonを用いた <br />         
-                ツール・プロダクト開発にも取り組んできました。 <br />                                       
+                3DCGを独学で（Blenderを中心に）習得する一方、競技プログラミング（AtCoder 茶色）や <br />
+                Pythonを用いたプロダクト開発にも取り組んできました。 <br />                                       
                 <br />
                 情報系のバックグラウンドを持ちながらアート制作にも深く携わってきた経験から、 <br />           
                 エンジニアリングとクリエイティブの両側面を持つプロダクト開発を得意としています。 <br />
@@ -103,29 +104,37 @@ export function AboutSection() {
           </Canvas>
 
           <div className="skill-panel">
-            {RINGS.map((ring) => {
-              const isActive  = hoveredRing?.category === ring.category
-              const isDimmed  = hoveredRing !== null && !isActive
+            {TIERS.map((tier) => {
+              const isTierDimmed = hoveredRing !== null && hoveredRing.tier !== tier.key
               return (
-                <div
-                  key={ring.category}
-                  className={`skill-group ${isActive ? 'skill-group--active' : ''} ${isDimmed ? 'skill-group--dimmed' : ''}`}
-                >
-                  <p className="skill-group-category" style={{ color: ring.color }}>
-                    {ring.category}
-                  </p>
-                  <ul className="skill-group-tags">
-                    {ring.skills.map((s) => (
-                      <li
-                        key={s}
-                        className="skill-group-tag"
-                        style={{ borderColor: `${ring.color}26` }}
-                      >
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div key={tier.key} className={`skill-tier ${isTierDimmed ? 'skill-tier--dimmed' : ''}`}>
+                <p className="skill-tier-label">{tier.label}</p>
+                {RINGS.filter((r) => r.tier === tier.key).map((ring) => {
+                  const isActive = hoveredRing?.category === ring.category
+                  const isDimmed = hoveredRing !== null && !isActive
+                  return (
+                    <div
+                      key={ring.category}
+                      className={`skill-group ${isActive ? 'skill-group--active' : ''} ${isDimmed ? 'skill-group--dimmed' : ''}`}
+                    >
+                      <p className="skill-group-category" style={{ color: ring.color }}>
+                        {ring.category}
+                      </p>
+                      <ul className="skill-group-tags">
+                        {ring.skills.map((s) => (
+                          <li
+                            key={s}
+                            className="skill-group-tag"
+                            style={{ borderColor: `${ring.color}26` }}
+                          >
+                            {s}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )
+                })}
+              </div>
               )
             })}
           </div>

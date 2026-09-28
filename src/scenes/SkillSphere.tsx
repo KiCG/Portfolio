@@ -13,10 +13,13 @@ import {
   type Mesh,
 } from 'three'
 
+export type Tier = 'core' | 'applied'
+
 export type HoveredRing = {
   category: string
   skills: string[]
   color: string
+  tier: Tier
 }
 
 type RingData = HoveredRing & {
@@ -27,20 +30,13 @@ type RingData = HoveredRing & {
 
 export const RINGS: RingData[] = [
   {
-    category: 'Web & Creative Coding',
-    text: ' tcaeR ・ tpircSepyT ・',
-    skills: ['React', 'TypeScript'],
-    tilt: [0, 0, 0],
-    baseSpeed: 0.28,
-    color: '#ffffff',
-  },
-  {
     category: '3DCG & Motion',
     text: ' ・ evloseR icniVaD ・ iniduoH ・ rednelB',
     skills: ['Blender', 'Houdini', 'DaVinci Resolve'],
     tilt: [MathUtils.degToRad(58), 0, MathUtils.degToRad(15)],
     baseSpeed: -0.22,
     color: '#7ad7ff',
+    tier: 'core',
   },
   {
     category: 'Digital Fabrication',
@@ -49,15 +45,31 @@ export const RINGS: RingData[] = [
     tilt: [MathUtils.degToRad(-55), 0, MathUtils.degToRad(-18)],
     baseSpeed: 0.19,
     color: '#ffb37a',
+    tier: 'core',
+  },
+  {
+    category: 'Frontend',
+    text: '       tcaeR       ・       tpircSepyT       ・ ',
+    skills: ['React', 'TypeScript'],
+    tilt: [0, 0, 0],
+    baseSpeed: 0.28,
+    color: '#feffa9',
+    tier: 'applied',
   },
   {
     category: 'Backend & AI',
-    text: ' ・ gnireenignE tpmorP ・ IPA opirT ・ IPA inimeG ・ ksalF ・ nohtyP',
-    skills: ['Python', 'Flask', 'Gemini API', 'Tripo API', 'Prompt Engineering'],
+    text: ' ・ IPA opirT ・ IPA inimeG ・ ksalF ・ nohtyP',
+    skills: ['Python', 'Flask', 'Gemini API', 'Tripo API'],
     tilt: [MathUtils.degToRad(32), 0, MathUtils.degToRad(72)],
     baseSpeed: -0.16,
     color: '#b3ffa0',
+    tier: 'applied',
   },
+]
+
+export const TIERS: { key: Tier; label: string }[] = [
+  { key: 'core',    label: 'Primary' },
+  { key: 'applied', label: 'Secondary' },
 ]
 
 const fresnelVertex = /* glsl */ `
@@ -88,24 +100,30 @@ type RingProps = {
   data: RingData
   radius: number
   isHovered: boolean
+  isDimmed: boolean
 }
 
-function SkillTextRing({ data, radius, isHovered }: RingProps) {
+function SkillTextRing({ data, radius, isHovered, isDimmed }: RingProps) {
   const outerRef = useRef<Group>(null!)
   const groupRef = useRef<Group>(null!)
-  const speedRef = useRef(data.baseSpeed)
   const scaleRef = useRef(1.0)
 
   const chars = useMemo(() => Array.from(data.text), [data.text])
   const angleStep = useMemo(() => (Math.PI * 2) / chars.length, [chars.length])
+  const dimmedColor = useMemo(() => {
+　    const c = new Color(data.color).multiplyScalar(0.25)
+    return `#${c.getHexString()}`
+  }, [data.color])
+  const glowColor = useMemo(() => new Color(data.color).multiplyScalar(2.4), [data.color])
 
   useFrame((_, delta) => {
-    speedRef.current = MathUtils.lerp(speedRef.current, isHovered ? 0 : data.baseSpeed, 0.06)
-    groupRef.current.rotation.y += delta * speedRef.current
+    groupRef.current.rotation.y += delta * data.baseSpeed
 
     scaleRef.current = MathUtils.lerp(scaleRef.current, isHovered ? 1.07 : 1.0, 0.08)
     outerRef.current.scale.setScalar(scaleRef.current)
   })
+
+  const color = isDimmed ? dimmedColor : data.color
 
   return (
     <group ref={outerRef} rotation={data.tilt}>
@@ -120,9 +138,11 @@ function SkillTextRing({ data, radius, isHovered }: RingProps) {
               position={[x, 0, z]}
               rotation={[0, Math.PI / 2 - theta, 0]}
               fontSize={0.3}
-              color={isHovered ? '#ff7a2a' : data.color}
-              outlineWidth={isHovered ? 0.018 : 0}
-              outlineColor={data.color}
+              color={color}
+              outlineWidth={isHovered ? 0.006 : 0}
+              outlineColor={isHovered ? glowColor : data.color}
+              outlineBlur={isHovered ? 0.015 : 0}
+              outlineOpacity={isHovered ? 0.9 : 1}
               anchorX="center"
               anchorY="middle"
             >
@@ -198,7 +218,7 @@ export function SkillSphere({ onHoverChange }: Props) {
     if (ring.category !== hoveredRef.current) {
       hoveredRef.current = ring.category
       setHoveredCategory(ring.category)
-      onHoverChange({ category: ring.category, skills: ring.skills, color: ring.color })
+      onHoverChange({ category: ring.category, skills: ring.skills, color: ring.color, tier: ring.tier })
       document.body.style.cursor = 'pointer'
     }
   }, [invMatrices, onHoverChange])
@@ -230,13 +250,14 @@ export function SkillSphere({ onHoverChange }: Props) {
           data={ring}
           radius={2.64}
           isHovered={hoveredCategory === ring.category}
+          isDimmed={hoveredCategory !== null && hoveredCategory !== ring.category}
         />
       ))}
 
       <EffectComposer>
         <Bloom
           intensity={1.2}
-          luminanceThreshold={0.9}
+          luminanceThreshold={0.5}
           luminanceSmoothing={0.25}
           mipmapBlur
           kernelSize={KernelSize.LARGE}
