@@ -1,14 +1,32 @@
 import { useEffect, useMemo, useRef, useState, useCallback } from 'react'
+import { Link } from 'react-router-dom'
 
 type Group = '3dcg' | 'engineering' | 'fabrication'
 type Tag = 'team' | 'exhibited'
 
-const WORKS = [
+type Work = {
+  id: string
+  title: string
+  category: string
+  year: string
+  image: string
+  featured: boolean
+  group: Group
+  tags: Tag[]
+  description: string
+  github: string
+  live: string
+  notion: string
+  slug?: string
+}
+
+const WORKS: Work[] = [
   {
     id: '01', title: 'Emotional Monster Maker',    category: 'Blender · Gemini API · 3D Print',  year: '2026',
-    image: 'Emotional_Monster_Maker.png', featured: true, group: 'engineering' as Group, tags: ['team', 'exhibited'] as Tag[],
+    image: '/works/emotional-monster-maker/thumbnail.png', featured: true, group: 'engineering', tags: ['team', 'exhibited'],
     description: 'ユーザーの感情入力から Gemini API でモンスターのコンセプトを生成し、Tripo API で 3D 化、さらに 3Dプリンタで物理出力するインタラクティブ作品。Kyoto Micro Maker Faire 2026にて伊藤研究室のプロジェクトとして出展。',
     github: 'https://github.com/KiCG/Emotional-Monster-Maker', live: '', notion: 'https://www.notion.so/Emotional-Monster-Marker-348c905aa6c18068bd59c784ff65f0ae',
+    slug: 'emotional-monster-maker',
   },
   {
     id: '02', title: 'Ichigo Ichie',                category: 'React',                            year: '2026',
@@ -98,7 +116,6 @@ const TAG_LABEL: Record<Tag, string> = {
   exhibited: 'Exhibited',
 }
 
-type Work = typeof WORKS[number]
 type FilterTag = Tag | 'all'
 
 function WorkModal({ work, onClose }: { work: Work; onClose: () => void }) {
@@ -112,7 +129,7 @@ function WorkModal({ work, onClose }: { work: Work; onClose: () => void }) {
     }
   }, [onClose])
 
-  const hasLinks = work.github || work.live || work.notion
+  const hasLinks = work.github || work.live || work.notion || work.slug
 
   return (
     <div className="works-modal-overlay" onClick={onClose}>
@@ -140,7 +157,20 @@ function WorkModal({ work, onClose }: { work: Work; onClose: () => void }) {
             )}
             {hasLinks && (
               <div className="works-modal-links">
-                {work.notion && (
+                {work.slug ? (
+                  <Link
+                    to={`/works/${work.slug}`}
+                    className="works-modal-link works-modal-link--primary"
+                    onClick={() => {
+                      document.body.style.overflow = ''
+                      document.documentElement.scrollTop = 0
+                      document.body.scrollTop = 0
+                      window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+                    }}
+                  >
+                    詳細<span className="works-modal-link-arrow"> →</span>
+                  </Link>
+                ) : work.notion && (
                   <a href={work.notion} target="_blank" rel="noopener noreferrer" className="works-modal-link works-modal-link--primary">
                     詳細<span className="works-modal-link-arrow"> ↗</span>
                   </a>
