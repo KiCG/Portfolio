@@ -170,6 +170,9 @@ body {
   font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 1;
+  width: fit-content;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 122, 42, 0.8);
 }
 
 /* two-column body */
@@ -290,8 +293,8 @@ body {
   letter-spacing: -0.02em;
   line-height: 1;
   text-transform: none;
-  padding-bottom: 0;
-  border-bottom: none;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 122, 42, 0.8);
 }
 
 /* career list */
@@ -513,6 +516,9 @@ body {
   letter-spacing: -0.02em;
   line-height: 1;
   color: #fff;
+  width: fit-content;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 122, 42, 0.8);
 }
 
 /* subtitle separator */
@@ -961,6 +967,9 @@ body {
   letter-spacing: -0.02em;
   line-height: 1;
   color: #fff;
+  width: fit-content;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 122, 42, 0.8);
 }
 
 .contact-body {

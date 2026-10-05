@@ -54,8 +54,8 @@ export function AboutSection() {
             <p className="about-name">Ryusei Kishi</p>
             <p className="about-role">Creative Technologist</p>
             <p className="about-comment">
-              エンジニアリングの『合理』とアートの『非合理』を<br />
-              組み合わせて、体験をデザインする
+              自分の「いいな」を起点に、 <br />
+              使う人の視点で体験を調整する
             </p>
           </div>
         </div>
