@@ -4,7 +4,6 @@ export type WorkDetailMeta = {
   title: string
   tools: string[]
   category: string
-  thumbnail: string
   year?: string | number
 }
 
@@ -12,7 +11,7 @@ type LayoutProps = WorkDetailMeta & {
   children: ReactNode
 }
 
-export function WorkDetailLayout({ title, tools, category, thumbnail, year, children }: LayoutProps) {
+export function WorkDetailLayout({ title, tools, category, year, children }: LayoutProps) {
   return (
     <article className="work-detail">
       <header className="work-detail-header">
@@ -34,10 +33,6 @@ export function WorkDetailLayout({ title, tools, category, thumbnail, year, chil
           )}
         </dl>
       </header>
-
-      <figure className="work-detail-thumbnail">
-        <img src={thumbnail} alt={title} />
-      </figure>
 
       <div className="work-detail-body">{children}</div>
     </article>
